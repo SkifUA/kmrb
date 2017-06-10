@@ -9,7 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-06-10.19:58:48.547</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-06-10.20:33:47.135</IntrospectionTimestamp>
+      <IntrospectionStateNumber>852</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -28,5 +29,135 @@
     <schema id="8" parent="2" name="information_schema">
       <ObjectId>12121</ObjectId>
     </schema>
+    <sequence id="9" parent="3" name="users_id_seq">
+      <ObjectId>17041</ObjectId>
+      <StateNumber>852</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="10" parent="3" name="ar_internal_metadata">
+      <ObjectId>17033</ObjectId>
+      <StateNumber>851</StateNumber>
+    </table>
+    <table id="11" parent="3" name="schema_migrations">
+      <ObjectId>17025</ObjectId>
+      <StateNumber>850</StateNumber>
+    </table>
+    <table id="12" parent="3" name="users">
+      <ObjectId>17043</ObjectId>
+      <StateNumber>852</StateNumber>
+    </table>
+    <column id="13" parent="10" name="key">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>851</StateNumber>
+    </column>
+    <column id="14" parent="10" name="value">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>851</StateNumber>
+    </column>
+    <column id="15" parent="10" name="created_at">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>851</StateNumber>
+    </column>
+    <column id="16" parent="10" name="updated_at">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>851</StateNumber>
+    </column>
+    <index id="17" parent="10" name="ar_internal_metadata_pkey">
+      <ObjectId>17039</ObjectId>
+      <ColNames>key</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="18" parent="10" name="ar_internal_metadata_pkey">
+      <ObjectId>17040</ObjectId>
+      <ColNames>key</ColNames>
+      <UnderlyingIndexName>ar_internal_metadata_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="19" parent="11" name="version">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>850</StateNumber>
+    </column>
+    <index id="20" parent="11" name="schema_migrations_pkey">
+      <ObjectId>17031</ObjectId>
+      <ColNames>version</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="21" parent="11" name="schema_migrations_pkey">
+      <ObjectId>17032</ObjectId>
+      <ColNames>version</ColNames>
+      <UnderlyingIndexName>schema_migrations_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="22" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>852</StateNumber>
+      <SequenceName>users_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="23" parent="12" name="first_name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="24" parent="12" name="last_name">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="25" parent="12" name="email">
+      <Position>4</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="26" parent="12" name="phone">
+      <Position>5</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="27" parent="12" name="password_digest">
+      <Position>6</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="28" parent="12" name="company">
+      <Position>7</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="29" parent="12" name="created_at">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>852</StateNumber>
+    </column>
+    <column id="30" parent="12" name="updated_at">
+      <Position>9</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>852</StateNumber>
+    </column>
+    <index id="31" parent="12" name="users_pkey">
+      <ObjectId>17050</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="32" parent="12" name="users_pkey">
+      <ObjectId>17051</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>
