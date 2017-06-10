@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170610172956) do
     t.string   "phone"
     t.string   "password_digest"
     t.string   "company"
+    t.string   "remember_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
