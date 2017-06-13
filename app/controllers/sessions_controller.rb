@@ -8,11 +8,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:session][:email])
 
-    if @user && @user.authenticate(params[:session][:password])
+    if @user && !@user.activated
+      flash.now[:danger] = 'Email not activated'
+      redirect_to login_path
+    elsif @user && @user.authenticate(params[:session][:password])
       log_in@user
-      if params[:session][:remember_me] == '1'
-        remember @user
-      end
+      remember @user    if params[:session][:remember_me] == '1'
       redirect_to '/'
     else
       flash.now[:danger] = 'Invalid email/password combination'

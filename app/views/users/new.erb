@@ -1,16 +1,11 @@
 <div class="signup">
   <div class="container">
-
+    <h1>New user</h1>
     <%= form_for @user do |f| %>
         <%= f.label :first_name, "First Name" %>
         <%= f.text_field :first_name, :plaseholder => "First Name" %>
         <%= f.label :last_name, "Last Name" %>
         <%= f.text_field :last_name, :plaseholder => "Last Name" %>
-
-        <%= f.label :company, "Company" %>
-        <%= f.text_field :company, :plaseholder => "Company" %>
-        <%= f.label :phone, "Phone" %>
-        <%= f.text_field :phone, :plaseholder => "Phone" %>
 
         <%= f.label :email, "Email" %>
         <%= f.email_field :email, :plaseholder => "Email" %>

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   attr_accessor :remember_token, :activation_token, :reset_token
+  before_create :create_activation_digest
   before_save   :downcase_email
   before_save { self.email = email.downcase }
   validates :first_name,  presence: true, length: { maximum: 50 }
@@ -29,7 +30,6 @@ class User < ApplicationRecord
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(self.remember_token))
-
   end
 
   # Forgets a user.
@@ -39,9 +39,8 @@ class User < ApplicationRecord
 
   # Returns true if the given token matches the digest.
   def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    BCrypt::Password.new(activation_digest).is_password?(remember_token)
   end
-  # before_create :create_activation_digest
 
   # Activates /an account.
   def activate
@@ -77,5 +76,9 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
   end
 end
