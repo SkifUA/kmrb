@@ -19,9 +19,7 @@ ActiveRecord::Schema.define(version: 20170610172956) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "phone"
     t.string   "password_digest"
-    t.string   "company"
     t.string   "remember_digest"
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
