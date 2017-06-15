@@ -42,6 +42,15 @@ class User < ApplicationRecord
     BCrypt::Password.new(activation_digest).is_password?(remember_token)
   end
 
+  def reset?(reset_token)
+    BCrypt::Password.new(reset_digest).is_password?(reset_token)
+  end
+
+  # Returns true if a password reset has expired.
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   # Activates /an account.
   def activate
     update_attribute(:activated,    true)
