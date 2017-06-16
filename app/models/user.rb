@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   NAME_LENGTH_MAX = 50
   PASSWORD_LENGTH_MAX = 32
+  PASSWORD_LENGTH_MIN = 4
   EMAIL_LENGTH_MAX = 250
 
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -16,7 +17,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: EMAIL_LENGTH_MAX },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, confirmation: true, length: { minimum: PASSWORD_LENGTH_MIN }
 
   # Returns the hash digest of the given string.
   def User.digest(string)
