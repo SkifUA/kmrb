@@ -6,7 +6,10 @@
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+          <%= f.email_field :email,
+                            class: "form-control",
+                            placeholder: "Email",
+                            maxlength: User::EMAIL_LENGTH_MAX %>
         </div>
 
         <%= f.submit "Submit", class: "btn btn-primary" %>

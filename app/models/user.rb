@@ -2,14 +2,18 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  NAME_LENGTH_MAX = 50
+  PASSWORD_LENGTH_MAX = 32
+  EMAIL_LENGTH_MAX = 250
+
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save   :downcase_email
   before_save { self.email = email.downcase }
-  validates :first_name,  presence: true, length: { maximum: 50 }
-  validates :last_name,  presence: true, length: { maximum: 50 }
+  validates :first_name,  presence: true, length: { maximum: NAME_LENGTH_MAX }
+  validates :last_name,  presence: true, length: { maximum: NAME_LENGTH_MAX }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :email, presence: true, length: { maximum: EMAIL_LENGTH_MAX },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
