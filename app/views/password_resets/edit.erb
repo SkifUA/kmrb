@@ -6,13 +6,14 @@
     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
 
         <%= hidden_field_tag :email, @user.email %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, :plaseholder => "Password" %>
-
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation, :plaseholder => "Password" %>
-
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: "form-control" %>
+        </div>
         <%= f.submit "Update password", class: "btn btn-primary" %>
     <% end %>
   </div>
