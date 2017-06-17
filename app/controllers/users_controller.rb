@@ -15,8 +15,9 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+      redirect_to login_path
     else
+      flash[:error] = 'User not added'
       render :new
     end
   end

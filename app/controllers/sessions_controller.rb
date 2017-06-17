@@ -10,21 +10,20 @@ class SessionsController < ApplicationController
 
     if @user && !@user.activated
       flash.now[:danger] = 'Email not activated'
-      redirect_to login_path
+      render :new
     elsif @user && @user.authenticate(params[:session][:password])
       log_in@user
       remember @user    if params[:session][:remember_me] == '1'
-      redirect_to '/'
+      redirect_to root_path
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      # redirect_to '/login'
-      redirect_to signup_path
+      render :new
     end
   end
 
   # action logout user delete auth user_id and redirect to root
   def destroy
     log_out
-    redirect_to '/'
+    redirect_to login_path
   end
 end

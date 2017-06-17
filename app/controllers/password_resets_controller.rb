@@ -16,7 +16,7 @@ class PasswordResetsController < ApplicationController
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:info] = "Email sent with password reset instructions"
-      redirect_to root_url
+      redirect_to login_path
     else
       flash.now[:danger] = "Email address not found"
       render :new
@@ -35,6 +35,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "Password has been reset."
       redirect_to root_path
     else
+      lash.now[:danger] = "Error password reset"
       render :edit
     end
   end
@@ -46,8 +47,8 @@ class PasswordResetsController < ApplicationController
 
   # Confirms a valid user.
   def valid_user
-    unless (@user && @user.activated? && @user.reset?(params[:id]))
-      flash.now[:danger] = "Error key data"
+    unless @user && @user.reset?(params[:id])
+      flash[:danger] = "Error key data"
       redirect_to root_url
     end
   end
