@@ -35,7 +35,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "Password has been reset."
       redirect_to root_path
     else
-      lash.now[:danger] = "Error password reset"
+      flash.now[:danger] = "Error password reset"
       render :edit
     end
   end
