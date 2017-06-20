@@ -3,16 +3,14 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h1>Forgot password</h1>
-    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email,
-                            class: "form-control",
-                            placeholder: "Email",
-                            maxlength: User::EMAIL_LENGTH_MAX %>
-        </div>
-
-        <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= simple_form_for(:password_reset, url: password_resets_path) do |f| %>
+        <%= f.input :email,
+                    placeholder: "Email",
+                    required: false,
+                    label_html: {
+                        maxlength: User::EMAIL_LENGTH_MAX
+                    } %>
+        <%= f.submit "Send", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
