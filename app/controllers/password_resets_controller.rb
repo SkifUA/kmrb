@@ -27,15 +27,12 @@ class PasswordResetsController < ApplicationController
     if params[:user][:password].empty?
       @user.errors.add(:password, "can't be empty")
       render :edit
-    elsif params[:user][:password] != params[:user][:password_confirmation]
-      flash.now[:danger] = "Error password confirmation"
-      render :edit
     elsif @user.update_attributes(user_params)
       log_in @user
       flash[:success] = "Password has been reset."
       redirect_to root_path
     else
-      flash.now[:danger] = "Error password reset"
+      flash.now[:danger] = "Password wasn't change"
       render :edit
     end
   end
