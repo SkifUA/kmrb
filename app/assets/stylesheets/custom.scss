@@ -1,4 +1,12 @@
 @import "bootstrap/bootstrap";
+
+/* Alert message */
+
+.alert-message {
+  position: absolute;
+  width: inherit;
+}
+
 /* Forms */
 
 #error_explanation {

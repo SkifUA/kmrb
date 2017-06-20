@@ -15,3 +15,15 @@
 //= require turbolinks
 //= requires .
 //= require_tree .
+
+function HideAlertClass() {
+    $('.alert-message').each(function() {
+        $(this).css('display', 'none');
+    });
+}
+
+$(document).ready(function() {
+    if ($('.alert-message').length) {
+        setTimeout(HideAlertClass, 3500);
+    }
+});
