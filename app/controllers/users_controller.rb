@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:info] = "Please check your email to activate your account."
       redirect_to login_path
     else
-      flash[:error] = 'User not added'
+      flash.now[:danger] = 'User not added'
       render :new
     end
   end
