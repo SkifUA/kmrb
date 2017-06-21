@@ -26,8 +26,9 @@ class User < ApplicationRecord
   validates :password,
             presence: true,
             confirmation: true,
-            length: { minimum: PASSWORD_LENGTH_MIN },
-            if: -> (m) { m.password.present? }
+            length: { minimum: PASSWORD_LENGTH_MIN,
+                      maximum: PASSWORD_LENGTH_MAX },
+            if: -> (m) { !m.password.nil? }
 
 
   # Returns the hash digest of the given string.
