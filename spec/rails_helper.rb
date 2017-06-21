@@ -58,4 +58,8 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+  config.alias_example_group_to :feature, :capybara_feature => true, :type => :feature
+  config.alias_example_to :scenario
+  config.alias_example_to :xscenario, :skip => "Temporarily skipped with xscenario"
+  config.alias_example_to :fscenario, :focus => true
 end
