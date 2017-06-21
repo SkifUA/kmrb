@@ -1,13 +1,22 @@
 require 'spec_helper'
 require "rails_helper"
 
-RSpec.feature "Login", :type => :feature do
-  scenario "User creates a new widget" do
+feature "Login" do
+
+  scenario "User not login" do
     visit "/login"
 
-    # fill_in "Name", :with => "My Widget"
-    # click_button "Create Widget"
+    fill_in "Email", :with => "My@Widget"
+    fill_in "Password", :with => "1111"
+    click_button "Log in"
+    expect(page).to have_text("Invalid email/password combination")
+  end
+
+  scenario "User go to forgot" do
+    visit "/login"
+
     page.find('a', text: 'Forgot password').click
     expect(page).to have_text("Forgot password")
   end
+
 end
