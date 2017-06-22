@@ -16,7 +16,7 @@ class PasswordResetsController < ApplicationController
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:info] = I18n.t 'success_msg_send_reset_mail'
-      redirect_to login_path
+      redirect_to home_path
     else
       flash.now[:danger] = I18n.t 'error_msg_email_notfound'
       render :new
