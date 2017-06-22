@@ -9,14 +9,14 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
 
     if @user && !@user.activated
-      flash.now[:danger] = 'Email not activated'
+      flash.now[:danger] = User::ERROR_MESSAGE_NOT_ACTIVATED
       render :new
     elsif @user && @user.authenticate(params[:session][:password])
       log_in@user
       remember @user    if params[:session][:remember_me] == '1'
       redirect_to root_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = User::ERROR_MESSAGE_AUTH
       render :new
     end
   end

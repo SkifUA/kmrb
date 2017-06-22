@@ -14,10 +14,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = User::SUCCESS_MESSAGE_CREATE_USER
       redirect_to login_path
     else
-      flash.now[:danger] = 'User not added'
+      flash.now[:danger] = User::ERROR_MESSAGE_CREATE_USER
       render :new
     end
   end
