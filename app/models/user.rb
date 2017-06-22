@@ -7,10 +7,6 @@ class User < ApplicationRecord
   PASSWORD_LENGTH_MIN = 4
   EMAIL_LENGTH_MAX = 250
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  SUCCESS_MESSAGE_CREATE_USER = "Please check your email to activate your account."
-  ERROR_MESSAGE_CREATE_USER = 'User not added'
-  ERROR_MESSAGE_AUTH = 'Invalid email/password combination'
-  ERROR_MESSAGE_NOT_ACTIVATED = 'Email not activated'
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest

@@ -9,7 +9,7 @@ feature "Login" do
     fill_in "Email", :with => "My@Widget"
     fill_in "Password", :with => "1111"
     click_button "Log in"
-    expect(page).to have_text(User::ERROR_MESSAGE_AUTH)
+    expect(page).to have_text(I18n.t 'error_msg_auth')
   end
 
   scenario "User go to forgot" do
