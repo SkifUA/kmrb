@@ -1,22 +1,20 @@
+<% provide(:title, "Login") %>
 <div class="container center">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1>Log In</h1>
-    <%= form_for(:session, url: login_path) do |f| %>
-        <div class="form-group">
-          <%= f.label :email, "Email" %>
-          <%= f.email_field :email,
+    <%= simple_form_for(:session, url: login_path) do |f| %>
+
+          <%= f.input :email,
                             class: "form-control",
                             placeholder: "Email",
                             maxlength: User::EMAIL_LENGTH_MAX %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, "Password" %>
-          <%= f.password_field :password ,
+
+          <%= f.input :password ,
                                class: "form-control",
                                placeholder: "Password",
                                maxlength: User::PASSWORD_LENGTH_MAX %>
-        </div>
+
         <div class="checkbox">
           <%= f.label :remember_me, class: "checkbox inline" do %>
 

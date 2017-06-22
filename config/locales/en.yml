@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  success_msg_create_user: "Please check your email to activate your account"
+  error_msg_create_user: "User not added"
+  error_msg_auth: "Invalid email/password combination"
+  error_msg_not_activated: = "Email not activated"
+  success_msg_send_reset_mail: "Email sent with password reset instructions"
+  success_msg_reset_password: "Password has been reset"
+  error_msg_has_expired_reset: "Password reset has expired"
+  error_msg_reset_password: "Password wasn't change"
+  error_msg_email_notfound: "Email address not found"
