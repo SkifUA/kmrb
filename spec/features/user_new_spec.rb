@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "rails_helper"
 
-feature "Login" do
+feature "New user" do
 
   scenario "User not create" do
     visit "/users/new"
