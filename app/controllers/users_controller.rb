@@ -15,15 +15,31 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = I18n.t 'success_msg_create_user'
-      redirect_to login_path
+      redirect_to home_path
     else
       flash.now[:danger] = I18n.t 'error_msg_create_user'
       render :new
     end
   end
 
-  def home
+  def show
+    @user = User.find(params[:id])
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      # Handle a successful update.
+      render 'show'
+    else
+      render 'edit'
+    end
+  end
+
 
   private
   def user_params

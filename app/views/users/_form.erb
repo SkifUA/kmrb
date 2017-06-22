@@ -14,7 +14,7 @@
                 placeholder: "Email",
                 class: "form-control",
                 maxlength: User::EMAIL_LENGTH_MAX %>
-
+    <% if yield(:edit).blank? %>
     <%= f.input :password,
                 placeholder: "Password",
                 class: "form-control",
@@ -24,6 +24,6 @@
                 placeholder: "Password confirmation",
                 class: "form-control",
                 maxlength: User::PASSWORD_LENGTH_MAX %>
-
+    <% end %>
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
