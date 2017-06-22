@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  success_msg_send_reset_mail: "Email sent with password reset instructions"
+  success_msg_reset_password: "Password has been reset"
+  error_msg_has_expired_reset: "Password reset has expired"
+  error_msg_reset_password: "Password wasn't change"
+  error_msg_email_notfound: "Email address not found"
