@@ -1,36 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'user/index'
-  end
-
-  namespace :admin do
-    get 'user/edit'
-  end
-
-  namespace :admin do
-    get 'user/show'
-  end
-
-  namespace :admin do
-    get 'user/update'
-  end
-
-  namespace :admin do
-    get 'user/destroy'
-  end
-
-  namespace :admin do
-    get 'base/index'
-  end
-
-  namespace :admin do
-
-    resources :users
-
-    root to: 'base#index'
-  end
-
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get '/home', to: 'static_pages#home'
   get '/help', to: 'static_pages#help'
