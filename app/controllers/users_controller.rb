@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :require_user, only: [:home]
-
   def index
     redirect_to root_url
   end
@@ -39,7 +37,6 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
 
   private
   def user_params
