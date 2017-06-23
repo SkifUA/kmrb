@@ -1,0 +1,2 @@
+class GroupAdmin < ApplicationRecord
+end
