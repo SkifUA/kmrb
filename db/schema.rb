@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170623084147) do
 
   create_table "admins", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "group_id"
+    t.integer "group_admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_admins_on_user_id"
