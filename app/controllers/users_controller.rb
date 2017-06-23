@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :require_user, only: [:home]
-
   def index
     redirect_to root_url
   end
