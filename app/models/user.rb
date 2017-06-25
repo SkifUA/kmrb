@@ -91,6 +91,10 @@ class User < ApplicationRecord
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
   end
+  
+  def admin?
+    self.admin.present?
+  end
 
   private
 

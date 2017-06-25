@@ -68,3 +68,4 @@ gem 'font-awesome-sass',  '~> 4.3'
 
 # admin
 gem 'rails_admin'
+gem 'cancancan'

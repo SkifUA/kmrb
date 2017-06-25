@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource unless Rails.env == 'test'
 
   def index
     redirect_to root_url
