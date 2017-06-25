@@ -6,4 +6,8 @@ RSpec.describe GroupAdmin, type: :model do
   it 'works' do
     expect(group_admin).to be_a GroupAdmin
   end
+
+  it 'is valid' do
+    expect(group_admin).to be_valid
+  end
 end

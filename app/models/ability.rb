@@ -37,7 +37,7 @@ class Ability
     cans = []
     user.admin.group_admin.as_json.map do |k,v|
       if v.is_a?(Integer) && k != 'id'
-        next if v < 0 || v > GroupAdmin::NUMBER_ACCESS.max
+        next if v < 0 || v > GroupAdmin::NUMBERS_ACCESS.max
         cans << {
             action: can_actions(v),
             model: (k + 's').classify.constantize
