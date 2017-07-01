@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(
+    id:1,
+    first_name: 'admin',
+    last_name: 'admin',
+    email: 'skif_lg@ukr.net',
+    password_digest: '$2a$10$3zykKntipkPx300G2Qj5S.i1xlDMTBdArD5YRBw5rPYsqPOuwjDm.',
+    activated: true
+)
+
+group_admin = GroupAdmin.create(
+    id: 1,
+    name: 'default',
+    user: 1,
+    admin: 1,
+    group_admin: 0
+)
+
+Admin.create(
+         id: 1,
+         user_id: user.id,
+         group_admin_id: group_admin.id
+)
+
