@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :admin
 
   has_secure_password validates: false
 
@@ -89,6 +90,10 @@ class User < ApplicationRecord
   # Sends password reset email.
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
+  end
+
+  def admin?
+    self.admin.present?
   end
 
   private
