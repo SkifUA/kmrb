@@ -1,1 +1,7 @@
-<h2>Index model</h2>
+<h2>Index model: <%= @model %></h2>
+<% @index.each do |row| %>
+    <% @model.column_names.each do |column| %>
+         <p><%= to_uppercase column %> => <%= row.send(column)%></p>
+    <% end %>
+
+<% end %>

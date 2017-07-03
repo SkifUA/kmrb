@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     # get '/home', to: 'static_pages#home'
     root to: 'dashboard#home'
-    get    '/:model', to: 'model#index', as: 'table'
+    get    '/:model/', to: 'model#index', as: 'table'
     get    '/:model/:id', to: 'model#show', as: 'row_table'
     get    '/:model/:id/edit', to: 'model#edit', as: 'edit_row_table'
     patch    '/:model/:id', to: 'model#update', as: 'update_row_table'
