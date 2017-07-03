@@ -23,19 +23,10 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
+    return true if Rails.env == 'test'
     return false unless session[:user_id]
-    return false unless Administrator.exists?(user_id: session[:user_id])
+    return false unless Admin.exists?(user_id: session[:user_id])
     true
-  end
-
-  def superadmin?
-    return false unless session[:user_id]
-    return false unless Administrator.exists?(user_id: session[:user_id], role: Administrator::SUPERADMIN)
-    true
-  end
-
-  def require_admin
-    redirect_to '/login' unless admin?
   end
 
 end
