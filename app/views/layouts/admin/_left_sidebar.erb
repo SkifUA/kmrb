@@ -1,5 +1,7 @@
 <ul class="list-models">
-  <li>Home</li>
+  <li>
+    <%= link_to 'Dashboard', admin_root_path %>
+  </li>
   <% list_models.each do |model| %>
       <li>
         <%= link_to model, admin_table_path(model: model.to_s.underscore) %>
