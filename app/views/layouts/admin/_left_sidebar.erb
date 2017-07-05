@@ -2,7 +2,7 @@
   <li>Home</li>
   <% list_models.each do |model| %>
       <li>
-        <%= link_to to_uppercase(model), admin_table_path(model: model) %>
+        <%= link_to model, admin_table_path(model: model.to_s.underscore) %>
       </li>
   <% end %>
 </ul>

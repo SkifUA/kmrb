@@ -1,12 +1,21 @@
 module Admin::BaseHelper
 
   def list_models
-    list = ActiveRecord::Base.connection.tables
-    list - ['ar_internal_metadata', 'schema_migrations']
-    # ActiveRecord::Base.connection.tables.map{|x|x.classify.safe_constantize}.compact
+    ActiveRecord::Base
+            .descendants
+            .select! { |m| not_table.exclude? m.to_s }
   end
 
   def to_uppercase(model)
     model.split('_').map{ |word| word.capitalize }.join(' ')
+  end
+
+  private
+  def not_table
+    [
+        'WiceGridSerializedQuery',
+        'ActiveRecord::SchemaMigration',
+        'ApplicationRecord'
+    ]
   end
 end
