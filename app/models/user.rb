@@ -3,6 +3,14 @@ class User < ApplicationRecord
 
   has_secure_password validates: false
 
+  VISIBLE_COLUMNS = [
+      'id',
+      'first_name',
+      'last_name',
+      'email',
+      'created_at'
+  ]
+
   NAME_LENGTH_MAX = 50
   PASSWORD_LENGTH_MAX = 32
   PASSWORD_LENGTH_MIN = 4
@@ -94,6 +102,19 @@ class User < ApplicationRecord
 
   def admin?
     self.admin.present?
+  end
+
+  def invisible_column?(column)
+    invisible = [
+        :password_digest,
+        :remember_digest,
+        :activation_digest,
+        :reset_digest,
+        :reset_sent_at,
+        :created_at,
+        :updated_at
+    ]
+    !invisible.include? column
   end
 
   private

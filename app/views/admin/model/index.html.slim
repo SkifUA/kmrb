@@ -1,5 +1,5 @@
 - provide(:title, "Dashboard")
 - provide(:admin_title, @model)
 - @index.each do |row|
-  - @model.column_names.each do |column|
+  - @visible_columns.each do |column|
     p = "#{to_uppercase(column)} => #{row.send(column)}"
