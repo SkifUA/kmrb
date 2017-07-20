@@ -4,4 +4,5 @@ div class="container center"
   div class="row"
     div class="col-md-6 col-md-offset-3"
       h1 New user
-      = render 'form'
+      = simple_form_for @user do |f|
+        = render 'form', f: f
