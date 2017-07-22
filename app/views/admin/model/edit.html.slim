@@ -1,1 +1,9 @@
-h2 Edit model
+- provide(:title, "Edit #{@model}")
+- provide(:button_text, 'Edit')
+
+h2 Edit #{@model}
+= simple_form_for @row, url: admin_update_row_table_path do |f|
+  - if lookup_context.find_all("form_#{@model.name.downcase}").any?
+    = render "form_#{@model.name.downcase}", f: f
+  - else
+    =render "form", f: f

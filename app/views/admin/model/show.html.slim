@@ -1,4 +1,7 @@
 - provide(:title, "Dashboard")
 - provide(:admin_title, "#{@model} #{@row.id}")
+
 - @visible_columns.each do |column|
   p = "#{to_uppercase(column)} => #{@row.send(column)}"
+.btn.btn-default
+  = link_to 'Edit', admin_edit_row_table_path(@model.name.downcase)

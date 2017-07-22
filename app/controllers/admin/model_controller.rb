@@ -13,7 +13,6 @@ class Admin::ModelController < Admin::BaseController
   end
 
   def edit
-    @edible_columns = edible_columns @model
     @row = @model.find(params[:id])
   end
 
@@ -37,11 +36,6 @@ class Admin::ModelController < Admin::BaseController
   def visible_columns(model)
     return model.column_names unless defined? model::VISIBLE_COLUMNS
     model::VISIBLE_COLUMNS
-  end
-
-  def edible_columns(model)
-    return model.column_names unless defined? model::EDIBLE_COLUMNS
-    model::EDIBLE_COLUMNS
   end
 
 end

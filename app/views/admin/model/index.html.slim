@@ -1,5 +1,7 @@
 - provide(:title, "Dashboard")
 - provide(:admin_title, @model)
+
 - @index.each do |row|
   - @visible_columns.each do |column|
     p = "#{to_uppercase(column)} => #{row.send(column)}"
+  = link_to "Show", admin_row_table_path(@model.name.downcase, row.id)
