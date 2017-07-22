@@ -1,18 +1,20 @@
 class Admin::ModelController < Admin::BaseController
 
+  before_action :get_object_model
+
   def index
-    @model = object_model params[:model]
     @visible_columns = visible_columns @model
     @index = @model.all
   end
 
   def show
-    @model = object_model params[:model]
     @visible_columns = visible_columns @model
     @row = @model.find(params[:id])
   end
 
   def edit
+    @edible_columns = edible_columns @model
+    @row = @model.find(params[:id])
   end
 
   def update
@@ -28,13 +30,18 @@ class Admin::ModelController < Admin::BaseController
         .camelize
   end
 
-  def object_model(param)
-    @model = Kernel.const_get(name_model param)
+  def get_object_model
+    @model = Kernel.const_get(name_model params[:model])
   end
-
 
   def visible_columns(model)
     return model.column_names unless defined? model::VISIBLE_COLUMNS
     model::VISIBLE_COLUMNS
   end
+
+  def edible_columns(model)
+    return model.column_names unless defined? model::EDIBLE_COLUMNS
+    model::EDIBLE_COLUMNS
+  end
+
 end
