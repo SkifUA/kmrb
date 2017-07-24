@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ModelController, type: :controller do
+RSpec.describe Admin::ModelsController, type: :controller do
+
+  let(:user) { create :user }
 
   describe "GET models#index" do
     it "returns http success" do
@@ -13,7 +15,7 @@ RSpec.describe Admin::ModelController, type: :controller do
   describe "GET models#show" do
     it "returns http success" do
 
-      get(:show, params: { model: 'user', id: 1 })
+      get(:show, params: { model: 'user', id: user.id })
       expect(response).to have_http_status(:success)
     end
   end
