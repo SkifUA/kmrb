@@ -32,6 +32,6 @@ en:
   error_msg_email_notfound: "Email address not found"
   admin:
     models:
-      not_created_form: "Not created form model:"
+      not_created_form: "Not created form for model:"
 
 

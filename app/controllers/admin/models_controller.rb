@@ -1,4 +1,4 @@
-class Admin::ModelController < Admin::BaseController
+class Admin::ModelsController < Admin::BaseController
 
   before_action :get_object_model
 
@@ -14,7 +14,7 @@ class Admin::ModelController < Admin::BaseController
 
   def edit
     unless check_existence_model_form
-      flash[:danger] = I18n.t 'admin.models.not_created_form'
+      flash[:danger] = "#{I18n.t 'admin.models.not_created_form'} #{@model.name}"
       redirect_to admin_root_path
     end
     @row = @model.find(params[:id])
