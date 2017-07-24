@@ -16,14 +16,11 @@
 //= requires .
 //= require_tree .
 
-function HideAlertClass() {
-    $('.alert-message').each(function() {
-        $(this).css('display', 'none');
-    });
-}
+var ready = function() {
+    setTimeout(function() {
+        $('.alert-message').remove();
+    }, 3500);
+};
 
-$(document).ready(function() {
-    if ($('.alert-message').length) {
-        setTimeout(HideAlertClass, 3500);
-    }
-});
+$(document).ready(ready);
+$(document).on('turbolinks:load', ready);
