@@ -3,4 +3,4 @@
 
 h2 Edit #{@model}
 = simple_form_for @row, url: admin_update_row_table_path do |f|
-  = render "form_#{@model.name.downcase}", f: f
+  = render "form_#{@model.name.underscore}", f: f
