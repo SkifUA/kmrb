@@ -13,6 +13,10 @@ class Admin::ModelController < Admin::BaseController
   end
 
   def edit
+    unless check_existence_model_form
+      flash[:danger] = I18n.t 'admin.models.not_created_form'
+      redirect_to admin_root_path
+    end
     @row = @model.find(params[:id])
   end
 
@@ -36,6 +40,10 @@ class Admin::ModelController < Admin::BaseController
   def visible_columns(model)
     return model.column_names unless defined? model::VISIBLE_COLUMNS
     model::VISIBLE_COLUMNS
+  end
+
+  def check_existence_model_form
+    lookup_context.find_all("/admin/model/_form_#{@model.name.downcase}").any?
   end
 
 end
