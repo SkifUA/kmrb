@@ -1,4 +1,6 @@
 ul.nav.nav-sidebar
-  li = link_to 'Dashboard', admin_root_path
+  li class="#{'active' if params[:controller] =~ /dashboard/ }"
+    = link_to 'Dashboard', admin_root_path
   - list_models.each do |model|
-    li = link_to model, admin_table_path(model: model.to_s.underscore)
+    li class="#{'active' if params[:model] == model.to_s.underscore}"
+      = link_to model, admin_table_path(model: model.to_s.underscore)
