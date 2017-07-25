@@ -12,10 +12,12 @@ html
     .container.admin-dashboard
       - flash.each do |message_type, message|
         div class="alert alert-message alert-#{message_type}" = message
-
-      = render 'layouts/admin/left_sidebar'
-      = render 'layouts/admin/page_header'
-      = yield
+      .row
+        .col-sm-3.col-md-2.sidebar
+          = render 'layouts/admin/left_sidebar'
+        .col-sm-9
+          = render 'layouts/admin/page_header'
+          = yield
       = render 'layouts/admin/footer'
       = debug(params) if Rails.env.development?
 
