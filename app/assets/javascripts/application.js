@@ -20,6 +20,15 @@ var ready = function() {
     setTimeout(function() {
         $('.alert-message').remove();
     }, 5000);
+
+    $('table[data-datatable]').dataTable( {
+        paginate: false,
+        ordering: true,
+        columnDefs: [{
+            orderable: false,
+            targets: 'no-sort'
+        }]
+    } );
 };
 
 $(document).ready(ready);

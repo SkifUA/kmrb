@@ -1,7 +1,25 @@
 - provide(:title, "Dashboard")
 - provide(:admin_title, @model)
 
-- @index.each do |row|
-  - @visible_columns.each do |column|
-    p = "#{to_uppercase(column)} => #{row.send(column)}"
-  = link_to "Show", admin_row_table_path(@model.name.underscore, row.id)
+table#models-table.table.cell-border data-datatable=true
+  thead
+    tr
+      - @visible_columns.each do |column|
+        th =to_uppercase column
+      th.no-sort &nbsp
+  tbody
+    - @index.each do |row|
+      tr
+        - @visible_columns.each do |column|
+          td = row.send(column)
+        td.btn-group.pull-right
+          button.btn.btn-link
+            = link_to admin_row_table_path(@model.name.underscore, row.id)
+              i.glyphicon.glyphicon-eye-open
+          button.btn.btn-link
+            = link_to admin_edit_row_table_path(@model.name.underscore, row.id)
+              i.glyphicon.glyphicon-pencil
+          button.btn.btn-link
+            = link_to admin_delete_row_table_path(@model.name.underscore, row.id),
+                    method: :delete, data: { confirm: "Are you sure?" }
+              i.glyphicon.glyphicon-trash
