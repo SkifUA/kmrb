@@ -9,7 +9,7 @@ html
 
   body
     = render 'layouts/admin/header'
-    .admin-dashboard.container-fluid
+    .admin-dashboard.container
       - flash.each do |message_type, message|
         div class="alert alert-message alert-#{message_type}" = message
       .row
