@@ -19,7 +19,7 @@
 var ready = function() {
     setTimeout(function() {
         $('.alert-message').remove();
-    }, 3500);
+    }, 5000);
 };
 
 $(document).ready(ready);
