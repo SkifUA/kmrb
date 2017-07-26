@@ -1,6 +1,9 @@
 - provide(:title, "Dashboard")
 - provide(:admin_title, @model)
-
+.row.col-sm-12
+  .col-sm-3
+    button.btn.btn-default
+      = link_to "Create new #{@model}", admin_new_model_row_path(@model.name.underscore)
 table#models-table.table.cell-border data-datatable=true
   thead
     tr
@@ -14,12 +17,12 @@ table#models-table.table.cell-border data-datatable=true
           td = row.send(column)
         td.btn-group.pull-right
           button.btn.btn-link
-            = link_to admin_row_table_path(@model.name.underscore, row.id)
+            = link_to admin_model_row_path(@model.name.underscore, row.id)
               i.glyphicon.glyphicon-eye-open
           button.btn.btn-link
-            = link_to admin_edit_row_table_path(@model.name.underscore, row.id)
+            = link_to admin_edit_model_row_path(@model.name.underscore, row.id)
               i.glyphicon.glyphicon-pencil
           button.btn.btn-link
-            = link_to admin_delete_row_table_path(@model.name.underscore, row.id),
+            = link_to admin_delete_model_row_path(@model.name.underscore, row.id),
                     method: :delete, data: { confirm: "Are you sure?" }
               i.glyphicon.glyphicon-trash

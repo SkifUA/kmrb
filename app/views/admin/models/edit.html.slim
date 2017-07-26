@@ -2,5 +2,5 @@
 - provide(:button_text, 'Edit')
 
 h2 Edit #{@model}
-= simple_form_for @row, url: admin_update_row_table_path do |f|
+= simple_form_for @row, url: admin_update_model_row_path do |f|
   = render "form_#{@model.name.underscore}", f: f

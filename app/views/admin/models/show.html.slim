@@ -4,4 +4,4 @@
 - @visible_columns.each do |column|
   p = "#{to_uppercase(column)} => #{@row.send(column)}"
 
-= link_to 'Edit', admin_edit_row_table_path(@model.name.underscore), class: "btn btn-default"
+= link_to 'Edit', admin_edit_model_row_path(@model.name.underscore), class: "btn btn-default"
