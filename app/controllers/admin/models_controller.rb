@@ -20,6 +20,10 @@ class Admin::ModelsController < Admin::BaseController
     @row = @model.find(params[:id])
   end
 
+  def new
+    @row = @model.new
+  end
+
   def update
   end
 
@@ -43,7 +47,7 @@ class Admin::ModelsController < Admin::BaseController
   end
 
   def check_existence_model_form
-    lookup_context.find_all("/admin/model/_form_#{@model.name.downcase}").any?
+    lookup_context.find_all("/admin/models/_form_#{@model.name.downcase}").any?
   end
 
 end
