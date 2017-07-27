@@ -38,5 +38,10 @@ en:
   admin:
     models:
       not_created_form: "Not created form for model:"
+      success:
+        update: "Data updated in model:"
+      errors:
+        defined_edible_column: "Defined edible column"
+        update: "Data did't update in model:"
 
 
