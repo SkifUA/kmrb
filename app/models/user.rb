@@ -11,6 +11,12 @@ class User < ApplicationRecord
       'created_at'
   ]
 
+  EDIBLE_COLUMNS = [
+      :first_name,
+      :last_name,
+      :email
+  ]
+
   NAME_LENGTH_MAX = 50
   PASSWORD_LENGTH_MAX = 32
   PASSWORD_LENGTH_MIN = 4
