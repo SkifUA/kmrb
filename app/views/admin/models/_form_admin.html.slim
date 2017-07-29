@@ -1,0 +1,12 @@
+= f.association :user,
+        label_method: :name,
+        value_method: :id,
+        include_blank: false
+
+= f.association :group_admin,
+        as: :check_boxes,
+        label_method: :name,
+        value_method: :id,
+        include_blank: false
+
+= f.submit yield(:button_text), class: "btn btn-primary"
