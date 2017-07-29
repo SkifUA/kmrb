@@ -35,10 +35,29 @@ class Admin::ModelsController < Admin::BaseController
     @row = @model.find(params[:id])
     if @row.update_attributes(data_update)
       flash[:info] = "#{I18n.t 'admin.models.success.update'} #{name_model @model.name}"
-      redirect_to admin_model_row_path(@model, params[:id])
+      redirect_to admin_model_row_path(@model.name.underscore, params[:id])
     else
       flash[:danger] = "#{I18n.t 'admin.models.errors.update'} #{name_model @model.name}"
-      redirect_to admin_edit_model_row_path(@model, params[:id])
+      redirect_to admin_edit_model_row_path(@model.name.underscore, params[:id])
+    end
+  end
+
+  def create
+    data_create = model_params
+
+    unless data_create.present?
+      redirect_to admin_new_model_row_path(@model)
+      return
+    end
+
+    @row = @model.new(data_create)
+
+    if @row.save
+      flash[:success] = "#{I18n.t 'admin.models.success.create'} #{name_model @model.name}"
+      redirect_to admin_model_rows_path(@model.name.underscore)
+    else
+      flash.now[:danger] = "#{I18n.t 'admin.models.errors.create'} #{name_model @model.name}"
+      render action: "new"
     end
   end
 

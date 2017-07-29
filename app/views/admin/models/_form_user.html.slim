@@ -1,16 +1,1 @@
-= f.input :first_name,
-        placeholder: "First Name",
-        class: "form-control",
-        maxlength: User::NAME_LENGTH_MAX
-
-= f.input :last_name,
-        placeholder: "Last Name",
-        class: "form-control",
-        maxlength: User::NAME_LENGTH_MAX
-
-= f.input :email,
-        placeholder: "Email",
-        class: "form-control",
-        maxlength: User::EMAIL_LENGTH_MAX
-
-= f.submit yield(:button_text), class: "btn btn-primary"
+= render 'users/form', f: f

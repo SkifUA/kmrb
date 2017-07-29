@@ -29,6 +29,7 @@ en:
   error_msg_reset_password: "Password wasn't change"
   error_msg_email_notfound: "Email address not found"
   users:
+    sent_invite_mail: "Was sent an invitation to email"
     success:
       update: "Your self date updated"
       create: "Please check your email to activate your account"
@@ -39,9 +40,11 @@ en:
     models:
       not_created_form: "Not created form for model:"
       success:
+        create: "Added new row to"
         update: "Data updated in model:"
       errors:
         defined_edible_column: "Defined edible column"
+        create: "Row did't add to"
         update: "Data did't update in model:"
 
 
