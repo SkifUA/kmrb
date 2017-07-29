@@ -21,7 +21,7 @@ var ready = function() {
         $('.alert-message').remove();
     }, 5000);
 
-    $('table[data-datatable]').dataTable( {
+    $('models-table').dataTable( {
         paginate: false,
         ordering: true,
         columnDefs: [{
