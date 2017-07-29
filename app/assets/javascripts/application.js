@@ -15,7 +15,12 @@
 //= require turbolinks
 //= requires .
 //= require_tree .
-$(document).ready(function () {
+
+var ready = function() {
+    setTimeout(function() {
+        $('.alert-message').remove();
+    }, 5000);
+
     $('table[data-datatable]').dataTable( {
         paginate: false,
         ordering: true,
@@ -24,13 +29,6 @@ $(document).ready(function () {
             targets: 'no-sort'
         }]
     } );
-} );
-
-var ready = function() {
-    setTimeout(function() {
-        $('.alert-message').remove();
-    }, 5000);
-
 };
 
 $(document).ready(ready);
