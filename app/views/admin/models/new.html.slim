@@ -1,7 +1,7 @@
 - provide(:title, "New #{@model}")
 - provide(:button_text, 'Create')
 
-h2 Edit #{@model}
+h2 New #{@model}
 = link_to 'Back', admin_model_rows_path(@model.name.underscore), class: "btn btn-default"
 = simple_form_for @row, url: admin_create_model_row_path do |f|
   = render "form_#{@model.name.underscore}", f: f
