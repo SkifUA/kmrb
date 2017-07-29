@@ -2,8 +2,7 @@
 - provide(:admin_title, @model)
 .row.col-sm-12
   .col-sm-3
-    button.btn.btn-default
-      = link_to "Create new #{@model}", admin_new_model_row_path(@model.name.underscore)
+    = link_to "Create new #{@model}", admin_new_model_row_path(@model.name.underscore), class: 'button btn btn-default'
 table#models-table.table.cell-border data-datatable=true
   thead
     tr
