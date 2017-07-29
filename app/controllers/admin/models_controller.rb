@@ -62,6 +62,17 @@ class Admin::ModelsController < Admin::BaseController
   end
 
   def destroy
+    row = @model.find(params[:id])
+    row.destroy
+
+    if row.destroyed
+      flash[:success] = "#{I18n.t 'admin.models.success.destroy'} #{params[:id]}"
+      redirect_to admin_model_rows_path(@model.name.underscore)
+    else
+      flash[:danger] = I18n.t 'admin.models.errors.destroy'
+      redirect_to admin_model_rows_path(@model.name.underscore)
+    end
+
   end
 
   private

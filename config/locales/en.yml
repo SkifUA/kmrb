@@ -42,9 +42,11 @@ en:
       success:
         create: "Added new row to"
         update: "Data updated in model:"
+        destroy: "Deleted row:"
       errors:
         defined_edible_column: "Defined edible column"
-        create: "Row did't add to"
-        update: "Data did't update in model:"
+        create: "Row didn't add to"
+        update: "Data didn't update in model:"
+        destroy: "Row didn't destroy!"
 
 
