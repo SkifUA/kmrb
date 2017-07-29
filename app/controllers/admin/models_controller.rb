@@ -15,12 +15,16 @@ class Admin::ModelsController < Admin::BaseController
   def edit
     unless check_existence_model_form
       flash[:danger] = "#{I18n.t 'admin.models.not_created_form'} #{@model.name}"
-      redirect_to admin_root_path
+      redirect_to admin_model_rows_path(@model.name.underscore)
     end
     @row = @model.find(params[:id])
   end
 
   def new
+    unless check_existence_model_form
+      flash[:danger] = "#{I18n.t 'admin.models.not_created_form'} #{@model.name}"
+      redirect_to admin_model_rows_path(@model.name.underscore)
+    end
     @row = @model.new
   end
 
@@ -91,12 +95,12 @@ class Admin::ModelsController < Admin::BaseController
     model::VISIBLE_COLUMNS
   end
 
-  def edible_columns(model)
-    unless defined? model::EDIBLE_COLUMNS
-      flash[:danger] = "#{I18n.t 'admin.models.errors.defined_edible_column'} #{name_model @model}"
+  def edible_columns
+    unless defined? @model::EDIBLE_COLUMNS
+      flash[:danger] = "#{I18n.t 'admin.models.errors.defined_edible_column'} #{name_model @model.name}"
       return []
     end
-    model::EDIBLE_COLUMNS
+    @model::EDIBLE_COLUMNS
   end
 
   def check_existence_model_form
@@ -104,7 +108,7 @@ class Admin::ModelsController < Admin::BaseController
   end
 
   def model_params
-    params.require(@model.name.downcase.to_sym).permit(edible_columns @model)
+    params.require(@model.name.downcase.to_sym).permit(edible_columns)
   end
 
 end
