@@ -1,5 +1,6 @@
 class GroupAdmin < ApplicationRecord
   has_many :admins
+
   NUMBERS_ACCESS = [
       0, # []
       1, # [:read]
@@ -16,17 +17,26 @@ class GroupAdmin < ApplicationRecord
       :id,
       :name
   ]
-  validates :user,
-            presence: true,
-            inclusion: { in: NUMBERS_ACCESS }
 
-  validates :admin,
-            presence: true,
-            inclusion: { in: NUMBERS_ACCESS }
+  NAME_LENGTH_MAX = 25
+  NAME_LENGTH_MIN = 2
 
-  validates :group_admin,
+  NON_GROUP_VALIDATE_ATTRS = [
+      'id',
+      'name',
+      'created_at',
+      'updated_at'
+  ]
+
+  GROUP_VALIDATE_ATTRS = self.attribute_names
+                             .reject{|attr| NON_GROUP_VALIDATE_ATTRS.include?(attr)}
+                             .collect {|attr| attr.to_sym}
+
+  validates :name,
             presence: true,
-            inclusion: { in: NUMBERS_ACCESS }
+            uniqueness: true,
+            length: { maximum: NAME_LENGTH_MAX, minimum: NAME_LENGTH_MIN }
+  validates_presence_of GROUP_VALIDATE_ATTRS
 
   def self.visible_columns
     VISIBLE_COLUMNS + ApplicationController.helpers.list_models.collect {|model| model.to_s.underscore}

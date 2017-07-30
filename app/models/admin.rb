@@ -13,9 +13,9 @@ class Admin < ApplicationRecord
       :user_id,
       :group_admin_id
   ]
-# TODO added validate
-  # validates :user_id, presence: true
-  # validates :group_id, presence: true
+
+  validates_uniqueness_of :user_id
+
 
   def self.visible_columns
     VISIBLE_COLUMNS
