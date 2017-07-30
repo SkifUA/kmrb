@@ -3,6 +3,6 @@
 - provide(:edit, true)
 
 h2 Edit #{@model}
-= link_to 'Back', admin_model_rows_path(@model.name.underscore), class: "btn btn-default"
+= link_to 'Back to List', admin_model_rows_path(@model.name.underscore), class: "btn btn-default"
 = simple_form_for @row, url: admin_update_model_row_path do |f|
   = render "form_#{@model.name.underscore}", f: f
