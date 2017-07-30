@@ -121,6 +121,10 @@ class User < ApplicationRecord
     VISIBLE_COLUMNS
   end
 
+  def self.edible_columns
+    EDIBLE_COLUMNS
+  end
+
   private
 
   # Converts email to all lower-case.a

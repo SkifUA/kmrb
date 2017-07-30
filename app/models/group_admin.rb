@@ -31,4 +31,8 @@ class GroupAdmin < ApplicationRecord
   def self.visible_columns
     VISIBLE_COLUMNS + ApplicationController.helpers.list_models.collect {|model| model.to_s.underscore}
   end
+
+  def self.edible_columns
+    EDIBLE_COLUMNS + ApplicationController.helpers.list_models.collect {|model| model.underscore}
+  end
 end

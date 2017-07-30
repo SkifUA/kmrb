@@ -20,4 +20,8 @@ class Admin < ApplicationRecord
   def self.visible_columns
     VISIBLE_COLUMNS
   end
+
+  def self.edible_columns
+    EDIBLE_COLUMNS
+  end
 end
