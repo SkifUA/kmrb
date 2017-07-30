@@ -15,11 +15,30 @@
 //= require turbolinks
 //= require cable
 //= require_directory ./bootstrap
+//= require_directory ./admin
+
+
 
 var ready = function() {
     setTimeout(function() {
         $('.alert-message').remove();
     }, 5000);
+
+    if ( $.fn.dataTable.isDataTable('table[data-datatable]') ) {
+        $('table[data-datatable]').DataTable();
+    }
+    else {
+        $('table[data-datatable]').dataTable( {
+            paginate: false,
+            ordering: true,
+            columnDefs: [{
+                orderable: false,
+                targets: 'no-sort'
+            }]
+        } );
+    }
+
+
 };
 
 $(document).ready(ready);
