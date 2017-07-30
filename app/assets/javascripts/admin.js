@@ -18,7 +18,6 @@
 //= require_directory ./admin
 
 
-
 var ready = function() {
     setTimeout(function() {
         $('.alert-message').remove();
@@ -37,8 +36,6 @@ var ready = function() {
             }]
         } );
     }
-
-
 };
 
 $(document).ready(ready);
