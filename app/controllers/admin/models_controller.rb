@@ -105,11 +105,11 @@ class Admin::ModelsController < Admin::BaseController
   end
 
   def check_existence_model_form?
-    lookup_context.find_all("/admin/models/_form_#{@model.name.downcase}").any?
+    lookup_context.find_all("/admin/models/_form_#{@model.name.underscore}").any?
   end
 
   def model_params
-    params.require(@model.name.downcase.to_sym).permit(model_edible_columns)
+    params.require(@model.name.underscore.to_sym).permit(model_edible_columns)
   end
 
 end

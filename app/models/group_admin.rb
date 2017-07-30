@@ -33,6 +33,6 @@ class GroupAdmin < ApplicationRecord
   end
 
   def self.edible_columns
-    EDIBLE_COLUMNS + ApplicationController.helpers.list_models.collect {|model| model.underscore}
+    EDIBLE_COLUMNS + ApplicationController.helpers.list_models.collect {|model| model.name.underscore.to_sym}
   end
 end
