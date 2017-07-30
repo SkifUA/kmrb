@@ -2,7 +2,7 @@
 - provide(:admin_title, "#{@model} #{@row.id}")
 
 - @visible_columns.each do |column|
-  p = "#{to_uppercase(column)}: #{@row.send(column)}"
+  p = "#{to_uppercase(show_label_column column)}: #{show_data_column @row, column}"
 .btn-group
   = link_to 'Edit', admin_edit_model_row_path(@model.name.underscore), class: "btn btn-default"
   = link_to 'Back to List', admin_model_rows_path(@model.name.underscore), class: "btn btn-default"

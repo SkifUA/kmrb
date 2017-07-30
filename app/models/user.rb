@@ -125,6 +125,10 @@ class User < ApplicationRecord
     EDIBLE_COLUMNS
   end
 
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   private
 
   # Converts email to all lower-case.a
@@ -138,7 +142,4 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
 
-  def name
-    "#{self.first_name} #{self.last_name}"
-  end
 end
