@@ -3,12 +3,12 @@ class Admin::ModelsController < Admin::BaseController
   before_action :get_object_model
 
   def index
-    @visible_columns = visible_columns @model
+    @visible_columns = model_visible_columns
     @index = @model.all
   end
 
   def show
-    @visible_columns = visible_columns @model
+    @visible_columns = model_visible_columns
     @row = @model.find(params[:id])
   end
 
@@ -90,14 +90,15 @@ class Admin::ModelsController < Admin::BaseController
     @model = Kernel.const_get(name_model params[:model])
   end
 
-  def visible_columns(model)
-    return model.column_names unless defined? model::VISIBLE_COLUMNS
-    model::VISIBLE_COLUMNS
+  def model_visible_columns
+    return @model::visible_columns if defined? @model::visible_columns
+    flash[:danger] = "#{I18n.t 'admin.models.errors.defined_visible_columns'} #{name_model @model.name}"
+    ['id']
   end
 
   def edible_columns
     unless defined? @model::EDIBLE_COLUMNS
-      flash[:danger] = "#{I18n.t 'admin.models.errors.defined_edible_column'} #{name_model @model.name}"
+      flash.now[:danger] = "#{I18n.t 'admin.models.errors.defined_edible_columns'} #{name_model @model.name}"
       return []
     end
     @model::EDIBLE_COLUMNS

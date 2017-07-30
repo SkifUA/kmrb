@@ -44,7 +44,8 @@ en:
         update: "Data updated in model:"
         destroy: "Deleted row:"
       errors:
-        defined_edible_column: "Defined edible column"
+        defined_edible_columns: "Defined edible columns"
+        defined_visible_columns: "Defined visible columns"
         create: "Row didn't add to"
         update: "Data didn't update in model:"
         destroy: "Row didn't destroy!"

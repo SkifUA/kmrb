@@ -6,6 +6,16 @@ class GroupAdmin < ApplicationRecord
       2, # [:read, :create, :update]
       3  # [:manage]
   ]
+  VISIBLE_COLUMNS = [
+      'id',
+      'name',
+      'created_at'
+  ]
+
+  EDIBLE_COLUMNS = [
+      :id,
+      :name
+  ]
   validates :user,
             presence: true,
             inclusion: { in: NUMBERS_ACCESS }
@@ -17,4 +27,8 @@ class GroupAdmin < ApplicationRecord
   validates :group_admin,
             presence: true,
             inclusion: { in: NUMBERS_ACCESS }
+
+  def self.visible_columns
+    VISIBLE_COLUMNS + ApplicationController.helpers.list_models.collect {|model| model.to_s.underscore}
+  end
 end

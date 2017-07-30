@@ -117,6 +117,10 @@ class User < ApplicationRecord
     self.admin.present?
   end
 
+  def self.visible_columns
+    VISIBLE_COLUMNS
+  end
+
   private
 
   # Converts email to all lower-case.a
