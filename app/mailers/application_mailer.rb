@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  DEFAULT_MAIL_FROM = 'kmet.admin@ukr.net'
-  default from: DEFAULT_MAIL_FROM
+
+  default from: Settings.mailer.user_name
   layout 'mailer'
 end
