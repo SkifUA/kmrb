@@ -21,9 +21,9 @@ class AdminAccess
 
   def access_model?(model = nil)
     if model.nil?
-      @group_admin.send(model) > 0
-    else
       @group_admin.send(@model) > 0
+    else
+      @group_admin.send(model.underscore) > 0
     end
 
   end

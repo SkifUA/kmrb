@@ -1,7 +1,6 @@
 class Admin::ModelsController < Admin::BaseController
 
   before_action :get_object_model, :guard
-  before_action :guard #, only: [:index, :show, :edit, :new]
 
   def index
     @visible_columns = model_visible_columns
