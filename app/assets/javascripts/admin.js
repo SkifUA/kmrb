@@ -22,7 +22,8 @@ var ready = function() {
     setTimeout(function() {
         $('.alert-message').remove();
     }, 5000);
-
+    $('.dropdown-toggle').dropdown();
+    
     if ( $.fn.dataTable.isDataTable('table[data-datatable]') ) {
         $('table[data-datatable]').DataTable();
     }

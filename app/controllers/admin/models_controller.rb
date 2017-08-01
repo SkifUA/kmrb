@@ -1,6 +1,7 @@
 class Admin::ModelsController < Admin::BaseController
 
-  before_action :get_object_model
+  before_action :get_object_model, :guard
+  before_action :guard #, only: [:index, :show, :edit, :new]
 
   def index
     @visible_columns = model_visible_columns
@@ -110,6 +111,19 @@ class Admin::ModelsController < Admin::BaseController
 
   def model_params
     params.require(@model.name.underscore.to_sym).permit(model_edible_columns)
+  end
+
+  def guard
+    @guard = AdminAccess.new @model.name, current_user.id
+    unless @guard.access_model?
+      flash[:danger]= I18n.t 'admin.access_error'
+      redirect_to admin_root_path and return
+    end
+
+    unless @guard.access_method? params[:action]
+      flash[:danger]= I18n.t 'admin.access_error'
+      redirect_to admin_model_rows_path(@model.name.underscore) and return
+    end
   end
 
 end

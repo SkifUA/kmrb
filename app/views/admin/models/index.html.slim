@@ -15,13 +15,16 @@ table#models-table.table.cell-border data-datatable=true
         - @visible_columns.each do |column|
           td = show_data_column row, column
         td.btn-group.pull-right
-          button.btn.btn-link
-            = link_to admin_model_row_path(@model.name.underscore, row.id)
-              i.glyphicon.glyphicon-eye-open
-          button.btn.btn-link
-            = link_to admin_edit_model_row_path(@model.name.underscore, row.id)
-              i.glyphicon.glyphicon-pencil
-          button.btn.btn-link
-            = link_to admin_delete_model_row_path(@model.name.underscore, row.id),
-                    method: :delete, data: { confirm: "Are you sure?" }
-              i.glyphicon.glyphicon-trash
+          -if @guard.access_method?(:show)
+            button.btn.btn-link
+              = link_to admin_model_row_path(@model.name.underscore, row.id)
+                i.glyphicon.glyphicon-eye-open
+          -if @guard.access_method?(:edit)
+            button.btn.btn-link
+              = link_to admin_edit_model_row_path(@model.name.underscore, row.id)
+                i.glyphicon.glyphicon-pencil
+          -if @guard.access_method?(:destroy)
+            button.btn.btn-link
+              = link_to admin_delete_model_row_path(@model.name.underscore, row.id),
+                      method: :delete, data: { confirm: "Are you sure?" }
+                i.glyphicon.glyphicon-trash

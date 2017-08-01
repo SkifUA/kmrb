@@ -37,6 +37,7 @@ en:
       create: "User not added"
       update: "Your date did not update"
   admin:
+    access_error: "You don't have access rights"
     models:
       not_created_form: "Not created form for model:"
       success:
