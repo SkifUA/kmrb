@@ -29,12 +29,13 @@ var ready = function() {
     }
     else {
         $('table[data-datatable]').dataTable( {
-            paginate: false,
             ordering: true,
             columnDefs: [{
                 orderable: false,
                 targets: 'no-sort'
-            }]
+            }],
+            pagingType: "full_numbers",
+            dom: '<"top"f>rt<"bottom"lp>'
         } );
     }
 };

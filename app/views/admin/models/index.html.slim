@@ -14,7 +14,7 @@ table#models-table.table.cell-border data-datatable=true
       tr
         - @visible_columns.each do |column|
           td = show_data_column row, column
-        td.btn-group.pull-right
+        td.btn-group
           -if @guard.access_method?(:show)
             button.btn.btn-link
               = link_to admin_model_row_path(@model.name.underscore, row.id)
