@@ -19,7 +19,7 @@ require 'rails_helper'
     it "renders the headers" do
       expect(mail.subject).to eq("Password reset")
       expect(mail.to).to eq(["user@example.com"])
-      expect(mail.from).to eq([ApplicationMailer::DEFAULT_MAIL_FROM])
+      expect(mail.from).to eq([Settings.mailer.user_name])
     end
 
   end
