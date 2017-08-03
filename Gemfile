@@ -23,8 +23,6 @@ gem 'coffee-rails', '~> 4.2.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use config in yml
-gem 'config'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -74,3 +72,6 @@ gem 'slim'
 # grid
 gem "wice_grid", '3.6.0.pre4'
 gem 'font-awesome-sass',  '~> 4.3'
+
+# Use config in yml
+gem 'config'
