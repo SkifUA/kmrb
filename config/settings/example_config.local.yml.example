@@ -1,0 +1,5 @@
+mailer:
+  user_name: 'kmet.admin@ukr.net'
+  password: 'Valer1yKmet1'
+  address: 'smtp.ukr.net'
+  port: 2525
