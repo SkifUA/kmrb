@@ -16,29 +16,3 @@
 //= require cable
 //= require_directory ./bootstrap
 //= require_directory ./admin
-
-
-var ready = function() {
-    setTimeout(function() {
-        $('.alert-message').remove();
-    }, 5000);
-    $('.dropdown-toggle').dropdown();
-    
-    if ( $.fn.dataTable.isDataTable('table[data-datatable]') ) {
-        $('table[data-datatable]').DataTable();
-    }
-    else {
-        $('table[data-datatable]').dataTable( {
-            ordering: true,
-            columnDefs: [{
-                orderable: false,
-                targets: 'no-sort'
-            }],
-            pagingType: "full_numbers",
-            dom: '<"top"f>rt<"bottom"lp>'
-        } );
-    }
-};
-
-$(document).ready(ready);
-$(document).on('turbolinks:load', ready);
