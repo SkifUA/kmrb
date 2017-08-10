@@ -40,10 +40,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
 
-      user_name: 'email@ukr.net',
-      password: 'password_ukr.net',
-      address: "smtp.ukr.net",
-      port: 2525,
+      user_name: Settings.mailer.user_name,
+      password: Settings.mailer.password,
+      address: Settings.mailer.address,
+      port: Settings.mailer.port,
       authentication: :login,
       ssl: true
   }

@@ -1,0 +1,30 @@
+- provide(:title, "Dashboard")
+- provide(:admin_title, @model)
+.row.col-sm-12
+  .col-sm-3
+    = link_to "Create new #{@model}", admin_new_model_row_path(@model.name.underscore), class: 'button btn btn-default'
+table#models-table.table.cell-border data-datatable=true
+  thead
+    tr
+      - @visible_columns.each do |column|
+        th = to_uppercase(show_label_column column)
+      th.no-sort &nbsp
+  tbody
+    - @index.each do |row|
+      tr
+        - @visible_columns.each do |column|
+          td = show_data_column row, column
+        td.btn-group
+          -if @guard.access_method?(:show)
+            button.btn.btn-link
+              = link_to admin_model_row_path(@model.name.underscore, row.id)
+                i.glyphicon.glyphicon-eye-open
+          -if @guard.access_method?(:edit)
+            button.btn.btn-link
+              = link_to admin_edit_model_row_path(@model.name.underscore, row.id)
+                i.glyphicon.glyphicon-pencil
+          -if @guard.access_method?(:destroy)
+            button.btn.btn-link
+              = link_to admin_delete_model_row_path(@model.name.underscore, row.id),
+                      method: :delete, data: { confirm: "Are you sure?" }
+                i.glyphicon.glyphicon-trash

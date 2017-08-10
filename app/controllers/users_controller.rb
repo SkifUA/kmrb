@@ -11,11 +11,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
-      flash[:info] = I18n.t 'success_msg_create_user'
+      flash[:info] = I18n.t 'users.success.create'
       redirect_to home_path
     else
-      flash.now[:danger] = I18n.t 'error_msg_create_user'
+      flash.now[:danger] = I18n.t 'users.error.create'
       render :new
     end
   end
@@ -31,9 +30,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Handle a successful update.
+      flash.now[:info] = I18n.t "users.success.update"
       render 'show'
     else
+      flash.now[:danger] = I18n.t 'users.error.update'
       render 'edit'
     end
   end

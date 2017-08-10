@@ -12,7 +12,7 @@ feature "New user" do
     fill_in "Password", with: "111"
     fill_in "Password confirmation", with: "111"
     click_button "Create"
-    expect(page).to have_text(I18n.t 'error_msg_create_user')
+    expect(page).to have_text(I18n.t 'users.error.create')
   end
 
   scenario "User create" do
@@ -24,7 +24,7 @@ feature "New user" do
     fill_in "Password", with: "1111"
     fill_in "Password confirmation", with: "1111"
     click_button "Create"
-    expect(page).to have_text(I18n.t 'success_msg_create_user')
+    expect(page).to have_text(I18n.t 'users.success.create')
   end
 
 end

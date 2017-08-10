@@ -1,0 +1,8 @@
+- provide(:title, "Sign Up")
+- provide(:button_text, 'Create')
+div class="container center"
+  div class="row"
+    div class="col-md-6 col-md-offset-3"
+      h1 New user
+      = simple_form_for @user do |f|
+        = render 'form', f: f

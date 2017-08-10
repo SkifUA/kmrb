@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.datetime :activated_at
       t.datetime :reset_sent_at
       t.timestamps
+      t.index ["email"], name: "index_users_on_email", unique: true
     end
   end
 end

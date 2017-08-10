@@ -1,0 +1,8 @@
+= f.input :name, placeholder: "Name"
+
+- list_models.each do |model|
+  = f.input model.name.underscore.to_sym,
+          as: :radio_buttons,
+          collection: GroupAdmin::NUMBERS_ACCESS
+
+= f.submit yield(:button_text), class: "btn btn-primary"

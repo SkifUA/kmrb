@@ -1,0 +1,10 @@
+- provide(:title, "Profile")
+
+div class="container center"
+  div class="row"
+    div class="col-md-6 col-md-offset-3"
+      h1
+        = "#{@user.first_name} #{@user.last_name}"
+      p
+        | Email:
+        = @user.email

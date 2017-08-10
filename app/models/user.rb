@@ -1,6 +1,25 @@
 class User < ApplicationRecord
+  has_one :admin
+  after_create :send_invite_email
 
   has_secure_password validates: false
+
+  VISIBLE_COLUMNS = [
+      'id',
+      'first_name',
+      'last_name',
+      'email',
+      'created_at',
+      'activated'
+  ]
+
+  EDIBLE_COLUMNS = [
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation
+  ]
 
   NAME_LENGTH_MAX = 50
   PASSWORD_LENGTH_MAX = 32
@@ -11,7 +30,6 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save   :downcase_email
-  before_save { self.email = email.downcase }
   validates :first_name,
             presence: true,
             length: { maximum: NAME_LENGTH_MAX }
@@ -91,6 +109,26 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
 
+  def send_invite_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  def admin?
+    self.admin.present?
+  end
+
+  def self.visible_columns
+    VISIBLE_COLUMNS
+  end
+
+  def self.edible_columns
+    EDIBLE_COLUMNS
+  end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   private
 
   # Converts email to all lower-case.a
@@ -104,7 +142,4 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
 
-  def name
-    "#{self.first_name} #{self.last_name}"
-  end
 end

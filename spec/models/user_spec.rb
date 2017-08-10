@@ -1,15 +1,8 @@
 require 'rails_helper'
 
 describe User do
-  subject :user do
-    User.new(
-        first_name: "Example",
-        last_name: 'User',
-        email: "user@example.com",
-        password: '111111',
-        password_confirmation: '111111'
-    )
-  end
+
+  let(:user) { create :user }
 
   it 'works' do
     expect(user).to be_a User

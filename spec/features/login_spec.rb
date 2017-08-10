@@ -3,11 +3,24 @@ require "rails_helper"
 
 feature "Login" do
 
+  let(:group_admin) { build :group_admin }
+  let(:user) { build :user }
+  let(:admin) { build :admin }
+
+  scenario "User login" do
+    visit "/login"
+
+    fill_in "Email", :with => "user@example.com"
+    fill_in "Password", :with => "1111"
+    click_button "Log in"
+    expect(page).to have_text('Home')
+  end
+
   scenario "User not login" do
     visit "/login"
 
-    fill_in "Email", :with => "My@Widget"
-    fill_in "Password", :with => "1111"
+    fill_in "Email", :with => "user@example.com"
+    fill_in "Password", :with => "22222"
     click_button "Log in"
     expect(page).to have_text(I18n.t 'error_msg_auth')
   end
