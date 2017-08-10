@@ -65,6 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # views
 gem 'slim'
+gem "rails_12factor", group: :production
 
 # pagination
 # gem 'will_paginate'
@@ -75,3 +76,5 @@ gem 'font-awesome-sass',  '~> 4.3'
 
 # Use config in yml
 gem 'config'
+
+ruby '2.4.0'
