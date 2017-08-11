@@ -44,7 +44,7 @@ Rails.application.configure do
       user_name: ENV['MAILER_USER_NAME'],
       password: ENV['MAILER_PASSWORD'],
       address: ENV['MAILER_ADDRESS'],
-      port: 2525,
+      port: 265,
       authentication: :login,
       ssl: true
   }
