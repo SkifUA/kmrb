@@ -16,7 +16,7 @@ require 'rails_helper'
     it "renders the headers" do
       expect(mail.subject).to eq("Account activation")
       expect(mail.to).to eq(["user@example.com"])
-      expect(mail.from).to eq([Settings.mailer.user_name])
+      expect(mail.from).to eq([ENV['MAILER_USER_NAME']])
     end
 
   end
