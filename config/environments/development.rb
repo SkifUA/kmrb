@@ -41,8 +41,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
 
       user_name: ENV['MAILER_USER_NAME'],
-      password: ENV['KmetKuz1@'],
-      address: ENV['smtp.ukr.net'],
+      password: ENV['MAILER_PASSWORD'],
+      address: ENV['MAILER_ADDRESS'],
       port: 2525,
       authentication: :login,
       ssl: true
