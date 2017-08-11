@@ -16,6 +16,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 .idea/*
+.env
 
 config/settings.local.yml
 config/settings/*.local.yml
