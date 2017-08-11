@@ -44,9 +44,10 @@ Rails.application.configure do
       user_name: ENV['MAILER_USER_NAME'],
       password: ENV['MAILER_PASSWORD'],
       address: ENV['MAILER_ADDRESS'],
-      port: 2525,
-      authentication: :login,
-      ssl: true
+      domain: "gmail.com",
+      port: 587,
+      authentication: :plain,
+      enable_starttls_auto: true
   }
 
   # Specifies the header that your server uses for sending files.
