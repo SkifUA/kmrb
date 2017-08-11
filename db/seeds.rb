@@ -15,12 +15,20 @@ user = User.create(
     activated: true
 )
 
-group_admin = GroupAdmin.create(
+GroupAdmin.create(
     id: 1,
     name: 'default',
     user: 1,
     admin: 1,
     group_admin: 0
+)
+
+group_admin = GroupAdmin.create(
+    id: 2,
+    name: 'master',
+    user: 3,
+    admin: 3,
+    group_admin: 3
 )
 
 Admin.create(

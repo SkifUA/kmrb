@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_one :admin
-  after_create :send_invite_email
+  # after_create :send_invite_email
 
   has_secure_password validates: false
 
