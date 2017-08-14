@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       flash.now[:danger] = I18n.t 'error_msg_not_activated'
       render :new
     elsif @user && @user.authenticate(params[:session][:password])
-      log_in@user
-      remember @user    if params[:session][:remember_me] == '1'
+      log_in(@user)
+      remember(@user) if params[:session][:remember_me] == '1'
       redirect_to root_path
     else
       flash.now[:danger] = I18n.t 'error_msg_auth'
@@ -25,5 +25,17 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to login_path
+  end
+
+  def google_auth
+    user = User.from_omniauth(request.env["omniauth.auth"])
+    if User.exists?(email: user.email)
+      @user = User.find_by_email(user.email)
+      log_in(@user)
+      redirect_to root_path
+    else
+      flash.now[:danger] = I18n.t 'error_msg_auth'
+      render :new
+    end
   end
 end

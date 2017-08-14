@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # Google
-gem 'google-api-client'
+# gem 'google-api-client'
 gem 'omniauth-google-oauth2'
 
 # Use Capistrano for deployment

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
 
+  get 'auth/:provider/callback', to: 'sessions#google_auth'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
   namespace :admin do
     # get '/home', to: 'static_pages#home'
     root to: 'dashboard#home'

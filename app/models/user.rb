@@ -134,6 +134,24 @@ class User < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
+  def self.from_omniauth(auth)
+
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.last_name = auth.info.last_name
+      user.first_name = auth.info.first_name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user
+    end
+  end
+
+  # def self.exist_by_email(email)
+  #   User.exis
+  # end
+
   private
 
   # Converts email to all lower-case.a
