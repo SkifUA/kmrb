@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_one :admin
-  # after_create :send_invite_email
+  after_create :send_invite_email
 
   has_secure_password validates: false
 
@@ -110,7 +110,12 @@ class User < ApplicationRecord
   end
 
   def send_invite_email
-    UserMailer.account_activation(self).deliver_now
+    begin
+      UserMailer.account_activation(self).deliver_now
+    rescue
+      puts "Invite mail did't sent to #{self.email}"
+
+    end
   end
 
   def admin?
